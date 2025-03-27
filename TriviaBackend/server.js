@@ -10,8 +10,12 @@ const app = express();
 // 🟢 Middleware
 app.use(express.json());
 app.use(
-  cors()
+  cors({
+    origin: ["http://localhost:5173", "https://trivia-quiz-m5x7.vercel.app"], // Allow both local and deployed frontend
+    credentials: true, // Allow cookies
+  })
 );
+
 app.use(
   session({
     secret: "your_secret_key", // Change to a strong key
